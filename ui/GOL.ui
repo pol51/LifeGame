@@ -1,0 +1,111 @@
+<ui version="4.0" >
+ <class>GOL</class>
+ <widget class="QWidget" name="GOL" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>338</width>
+    <height>368</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>LifeGame</string>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="1" column="0" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="txtNbLife" >
+       <property name="text" >
+        <string>Nombre: 0</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnNext" >
+       <property name="text" >
+        <string>&amp;Suivante</string>
+       </property>
+       <property name="icon" >
+        <iconset resource="../res/res.qrc" >:/icons/button/next.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnClear" >
+       <property name="text" >
+        <string>&amp;Vider</string>
+       </property>
+       <property name="icon" >
+        <iconset resource="../res/res.qrc" >:/icons/button/clear.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnQuit" >
+       <property name="text" >
+        <string>&amp;Quitter</string>
+       </property>
+       <property name="icon" >
+        <iconset resource="../res/res.qrc" >:/icons/button/quit.png</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="0" >
+    <widget class="LifeWidget" native="1" name="wgtGOL" >
+     <property name="minimumSize" >
+      <size>
+       <width>640</width>
+       <height>640</height>
+      </size>
+     </property>
+     <property name="maximumSize" >
+      <size>
+       <width>1280</width>
+       <height>1280</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>LifeWidget</class>
+   <extends>QWidget</extends>
+   <header>lifeWidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../res/res.qrc" />
+ </resources>
+ <connections/>
+</ui>

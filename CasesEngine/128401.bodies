@@ -1,0 +1,20 @@
+class Type
+!!!131217.cpp!!!	Type()
+_id = 0;
+_name = NULL;
+!!!131345.cpp!!!	~Type()
+if (_name) free(_name);
+!!!132241.cpp!!!	setName(in value : char*) : void
+if (!value)
+	return;
+
+//suppression de l'ancien nom
+if (_name)
+{
+	free(_name);
+	_name = NULL;
+}
+
+//copie du nouveau nom et allocation
+_name = (char*)malloc((strlen(value)+1) * sizeof(char));
+strcpy(_name, value);

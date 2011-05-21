@@ -1,0 +1,1305 @@
+format 27
+"CasesEngine"
+  cpp_root_dir "C:/Documents and Settings/PoL/Bureau/LifeGame (CaseEngine)/src/engine/"
+
+
+  
+  // class settings
+  default_attribute_visibility protected default_relation_visibility protected default_operation_visibility public
+  //class diagram settings
+  draw_all_relations yes hide_attributes no hide_operations no show_members_full_definition no show_members_visibility no package_name_in_tab no class_drawing_mode natural drawing_language uml show_context_mode no auto_label_position yes shadow yes
+  //use case diagram settings
+  package_name_in_tab no show_context no auto_label_position yes shadow yes
+  //sequence diagram settings
+  show_full_operations_definition no write_horizontally yes drawing_language uml shadow yes
+  //collaboration diagram settings
+  show_full_operations_definition no show_hierarchical_rank no write_horizontally yes drawing_language uml package_name_in_tab no show_context no shadow yes
+  //object diagram settings
+   write_horizontally yes package_name_in_tab no show_context no auto_label_position yes shadow yes
+  //component diagram settings
+  package_name_in_tab no show_context no auto_label_position yes shadow yes
+  draw_component_as_icon no show_component_req_prov no show_component_rea no
+  //deployment diagram settings
+  package_name_in_tab no show_context no write_horizontally yes auto_label_position yes shadow yes
+  draw_component_as_icon no show_component_req_prov no show_component_rea no
+  //state diagram settings
+  package_name_in_tab no show_context no auto_label_position yes write_trans_label_horizontally yes show_trans_definition no shadow yes
+  show_activities yes region_horizontally yes drawing_language uml
+  //activity diagram settings
+  package_name_in_tab no show_context no show_opaque_action_definition no auto_label_position yes write_flow_label_horizontally no shadow yes
+  show_infonote yes drawing_language uml
+  
+  class_color yellow duration_color transparent continuation_color gray note_color blue fragment_color transparent subject_color transparent usecase_color yellow package_color transparent component_color green artifact_color green deploymentnode_color gray state_color yellow stateaction_color transparent activity_color transparent activityregion_color transparent activityaction_color transparent parameterpin_color white 
+  font_size 8
+  diagram_format A4
+
+  mark_for_import
+  
+  classview 128017 "Class view"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default drawing_language default shadow default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default shadow default
+    show_activities default region_horizontally default drawing_language default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+    show_infonote default drawing_language default
+    
+    associated_deployment_view deploymentview_ref 128017 // Deployment view
+    classdiagram 128017 "Diagram"
+      draw_all_relations yes hide_attributes no hide_operations no show_members_full_definition yes show_members_visibility yes package_name_in_tab default class_drawing_mode class drawing_language c++ show_context_mode default auto_label_position default shadow default
+      size A4
+    end
+
+    class 128017 "Square"
+       stereotype "entity"
+      cpp_decl "#include <stdlib.h>
+
+${comment}${template}class ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 128017 "_upSquare"
+	protected explicit_type "Square*"
+	init_value "NULL"
+	cpp_decl "	${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};"
+	java_decl ""
+	idl_decl ""
+	get_oper operation_ref 128657 // getUpSquare
+	set_oper operation_ref 128785 // setUpSquare
+	comment "Case au dessus."
+      end
+
+      attribute 128145 "_rightSquare"
+	protected explicit_type "Square*"
+	init_value "NULL"
+	cpp_decl "	${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};"
+	java_decl ""
+	idl_decl ""
+	get_oper operation_ref 128913 // getRightSquare
+	set_oper operation_ref 129041 // setRightSquare
+	comment "Case à droite."
+      end
+
+      attribute 128273 "_downSquare"
+	protected explicit_type "Square*"
+	init_value "NULL"
+	cpp_decl "	${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};"
+	java_decl ""
+	idl_decl ""
+	get_oper operation_ref 129169 // getDownSquare
+	set_oper operation_ref 129297 // setDownSquare
+	comment "Case au dessous."
+      end
+
+      attribute 128401 "_leftSquare"
+	protected explicit_type "Square*"
+	init_value "NULL"
+	cpp_decl "	${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};"
+	java_decl ""
+	idl_decl ""
+	get_oper operation_ref 129425 // getLeftSquare
+	set_oper operation_ref 129553 // setLeftSquare
+	comment "Case à gauche."
+      end
+
+      classrelation 128657 // _object (<unidirectional association>)
+	relation 128529 --->
+	  a role_name "_object" multiplicity "1" init_value "NULL" protected
+	    comment "Objet contenue par la case."
+	    cpp default "	${comment}${static}${mutable}${volatile}${const}${type}* ${name}${value};"
+	    classrelation_ref 128657 // _object (<unidirectional association>)
+	  b parent class_ref 128145 // Object
+	get_oper operation_ref 129681 // getObject
+	set_oper operation_ref 129809 // setObject
+      end
+
+      operation 131729 "Square"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "	${comment}${inline}${name}${(}${)}${volatile}${throw};"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw}
+{
+	${body}}"
+	
+	
+	comment "Constructeur."
+      end
+
+      operation 131857 "~Square"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "	${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw}
+{
+	${body}}"
+	
+	
+	comment "Destructeur."
+      end
+
+      operation 128785 "setUpSquare"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "value" explicit_type "Square*"
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}
+{
+	_upSquare = ${p0};
+}"
+	cpp_name_spec "setUpSquare"
+	
+	java_name_spec "set_${name}"
+	
+	idl_name_spec "set_${name}"
+	set_of_attribute attribute_ref 128017 // _upSquare
+      end
+
+      operation 129041 "setRightSquare"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "value" explicit_type "Square*"
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}
+{
+	_rightSquare = ${p0};
+}"
+	cpp_name_spec "setRightSquare"
+	
+	java_name_spec "set_${name}"
+	
+	idl_name_spec "set_${name}"
+	set_of_attribute attribute_ref 128145 // _rightSquare
+      end
+
+      operation 129297 "setDownSquare"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "value" explicit_type "Square*"
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}
+{
+	_downSquare = ${p0};
+}"
+	cpp_name_spec "setDownSquare"
+	
+	java_name_spec "set_${name}"
+	
+	idl_name_spec "set_${name}"
+	set_of_attribute attribute_ref 128273 // _downSquare
+      end
+
+      operation 129553 "setLeftSquare"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "value" explicit_type "Square*"
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}
+{
+	_leftSquare = ${p0};
+}"
+	cpp_name_spec "setLeftSquare"
+	
+	java_name_spec "set_${name}"
+	
+	idl_name_spec "set_${name}"
+	set_of_attribute attribute_ref 128401 // _leftSquare
+      end
+
+      operation 129809 "setObject"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "value" type class_ref 128145 // Object
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0}* ${p0}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0}* ${p0}${)}${const}${volatile}${throw}
+{
+	_object = ${p0};
+}"
+	cpp_name_spec "setObject"
+	
+	java_name_spec "set_${name}"
+	
+	idl_name_spec "set_${name}"
+	set_of_relation classrelation_ref 128657 // _object (<unidirectional association>)
+      end
+
+      operation 128657 "getUpSquare"
+	const public explicit_return_type "Square*"
+	nparams 0
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}const ${type} ${name}${(}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}const ${type} ${class}::${name}${(}${)}${const}${volatile}${throw}
+{
+	return _upSquare;
+}"
+	cpp_name_spec "getUpSquare"
+	final 
+	java_name_spec "get_${name}"
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 128017 // _upSquare
+      end
+
+      operation 128913 "getRightSquare"
+	const public explicit_return_type "Square*"
+	nparams 0
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}const ${type} ${name}${(}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}const ${type} ${class}::${name}${(}${)}${const}${volatile}${throw}
+{
+	return _rightSquare;
+}"
+	cpp_name_spec "getRightSquare"
+	final 
+	java_name_spec "get_${name}"
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 128145 // _rightSquare
+      end
+
+      operation 129169 "getDownSquare"
+	const public explicit_return_type "Square*"
+	nparams 0
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}const ${type} ${name}${(}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}const ${type} ${class}::${name}${(}${)}${const}${volatile}${throw}
+{
+	return _downSquare;
+}"
+	cpp_name_spec "getDownSquare"
+	final 
+	java_name_spec "get_${name}"
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 128273 // _downSquare
+      end
+
+      operation 129425 "getLeftSquare"
+	const public explicit_return_type "Square*"
+	nparams 0
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}const ${type} ${name}${(}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}const ${type} ${class}::${name}${(}${)}${const}${volatile}${throw}
+{
+	return _leftSquare;
+}"
+	cpp_name_spec "getLeftSquare"
+	final 
+	java_name_spec "get_${name}"
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 128401 // _leftSquare
+      end
+
+      operation 129681 "getObject"
+	const public return_type class_ref 128145 // Object
+	nparams 0
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}const ${type}* ${name}${(}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}const ${type}* ${class}::${name}${(}${)}${const}${volatile}${throw}
+{
+	return _object;
+}"
+	cpp_name_spec "getObject"
+	final 
+	java_name_spec "get_${name}"
+	
+	idl_name_spec "get_${name}"
+	get_of_relation classrelation_ref 128657 // _object (<unidirectional association>)
+      end
+    end
+
+    class 128529 "Square8"
+       stereotype "entity"
+      cpp_decl "${comment}${template}class ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129041 // <generalisation>
+	relation 128913 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 129041 // <generalisation>
+	  b parent class_ref 128017 // Square
+      end
+
+      operation 132369 "Square8"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "	${comment}${inline}${name}${(}${)}${volatile}${throw};"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} : Square()
+{
+	${body}}"
+	
+	
+      end
+
+      operation 132497 "~Square8"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "	${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw}
+{
+	${body}}"
+	
+	
+      end
+
+      attribute 129425 "_upLeftSquare"
+	protected explicit_type "Square*"
+	init_value "NULL"
+	cpp_decl "	${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};"
+	java_decl ""
+	idl_decl ""
+	get_oper operation_ref 132625 // getUpLeftSquare
+	set_oper operation_ref 132753 // setUpLeftSquare
+	comment "Case au dessus à gauche."
+      end
+
+      attribute 129553 "_upRightSquare"
+	protected explicit_type "Square*"
+	init_value "NULL"
+	cpp_decl "	${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};"
+	java_decl ""
+	idl_decl ""
+	get_oper operation_ref 132881 // getUpRightSquare
+	set_oper operation_ref 133009 // setUpRightSquare
+	comment "Case au dessus à droite."
+      end
+
+      attribute 129681 "_downLeftSquare"
+	protected explicit_type "Square*"
+	init_value "NULL"
+	cpp_decl "	${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};"
+	java_decl ""
+	idl_decl ""
+	get_oper operation_ref 133137 // getDownLeftSquare
+	set_oper operation_ref 133265 // setDownLeftSquare
+	comment "Case au dessous à gauche."
+      end
+
+      attribute 129809 "_downRightSquare"
+	protected explicit_type "Square*"
+	init_value "NULL"
+	cpp_decl "	${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};"
+	java_decl ""
+	idl_decl ""
+	get_oper operation_ref 133393 // getDownRightSquare
+	set_oper operation_ref 133521 // setDownRightSquare
+	comment "Case au dessous à droite."
+      end
+
+      operation 132625 "getUpLeftSquare"
+	const public explicit_return_type "Square*"
+	nparams 0
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}const ${type} ${name}${(}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}const ${type} ${class}::${name}${(}${)}${const}${volatile}${throw}
+{
+	return _upLeftSquare;
+}"
+	cpp_name_spec "getUpLeftSquare"
+	final 
+	java_name_spec "get_${name}"
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 129425 // _upLeftSquare
+      end
+
+      operation 132881 "getUpRightSquare"
+	const public explicit_return_type "Square*"
+	nparams 0
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}const ${type} ${name}${(}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}const ${type} ${class}::${name}${(}${)}${const}${volatile}${throw}
+{
+	return _upRightSquare;
+}"
+	cpp_name_spec "getUpRightSquare"
+	final 
+	java_name_spec "get_${name}"
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 129553 // _upRightSquare
+      end
+
+      operation 133137 "getDownLeftSquare"
+	const public explicit_return_type "Square*"
+	nparams 0
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}const ${type} ${name}${(}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}const ${type} ${class}::${name}${(}${)}${const}${volatile}${throw}
+{
+	return _downLeftSquare;
+}"
+	cpp_name_spec "getDownLeftSquare"
+	final 
+	java_name_spec "get_${name}"
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 129681 // _downLeftSquare
+      end
+
+      operation 133393 "getDownRightSquare"
+	const public explicit_return_type "Square*"
+	nparams 0
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}const ${type} ${name}${(}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}const ${type} ${class}::${name}${(}${)}${const}${volatile}${throw}
+{
+	return _downRightSquare;
+}"
+	cpp_name_spec "getDownRightSquare"
+	final 
+	java_name_spec "get_${name}"
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 129809 // _downRightSquare
+      end
+
+      operation 132753 "setUpLeftSquare"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "value" explicit_type "Square*"
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}
+{
+	_upLeftSquare = ${p0};
+}"
+	cpp_name_spec "setUpLeftSquare"
+	
+	java_name_spec "set_${name}"
+	
+	idl_name_spec "set_${name}"
+	set_of_attribute attribute_ref 129425 // _upLeftSquare
+      end
+
+      operation 133009 "setUpRightSquare"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "value" explicit_type "Square*"
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}
+{
+	_upRightSquare = ${p0};
+}"
+	cpp_name_spec "setUpRightSquare"
+	
+	java_name_spec "set_${name}"
+	
+	idl_name_spec "set_${name}"
+	set_of_attribute attribute_ref 129553 // _upRightSquare
+      end
+
+      operation 133265 "setDownLeftSquare"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "value" explicit_type "Square*"
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}
+{
+	_downLeftSquare = ${p0};
+}"
+	cpp_name_spec "setDownLeftSquare"
+	
+	java_name_spec "set_${name}"
+	
+	idl_name_spec "set_${name}"
+	set_of_attribute attribute_ref 129681 // _downLeftSquare
+      end
+
+      operation 133521 "setDownRightSquare"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "value" explicit_type "Square*"
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}
+{
+	_downRightSquare = ${p0};
+}"
+	cpp_name_spec "setDownRightSquare"
+	
+	java_name_spec "set_${name}"
+	
+	idl_name_spec "set_${name}"
+	set_of_attribute attribute_ref 129809 // _downRightSquare
+      end
+    end
+
+    class 128145 "Object"
+       stereotype "entity"
+      cpp_decl "#include <string.h>
+#include <stdlib.h>
+
+${comment}${template}class ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128401 // _type (<unidirectional association>)
+	relation 128273 --->
+	  a role_name "_type" multiplicity "1" init_value "NULL" protected
+	    cpp default "	${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};"
+	    classrelation_ref 128401 // _type (<unidirectional association>)
+	  b parent class_ref 128401 // Type
+	get_oper operation_ref 130193 // getType
+	set_oper operation_ref 130321 // setType
+      end
+
+      attribute 129297 "_name"
+	protected explicit_type "char*"
+	cpp_decl "	${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};"
+	java_decl ""
+	idl_decl ""
+	get_oper operation_ref 130449 // getName
+      end
+
+      operation 131473 "Object"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "	${comment}${inline}${name}${(}${)}${volatile}${throw};"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw}
+{
+	${body}}"
+	
+	
+      end
+
+      operation 131601 "~Object"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "	${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw}
+{
+	${body}}"
+	
+	
+      end
+
+      operation 130321 "setType"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "value" type class_ref 128401 // Type
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}
+{
+	_type = ${p0};
+}"
+	cpp_name_spec "setType"
+	
+	java_name_spec "set_${name}"
+	
+	idl_name_spec "set_${name}"
+	set_of_relation classrelation_ref 128401 // _type (<unidirectional association>)
+      end
+
+      operation 132113 "setName"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "value" explicit_type "char*"
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}
+{
+	${body}}"
+	
+	
+      end
+
+      operation 130193 "getType"
+	const public return_type class_ref 128401 // Type
+	nparams 0
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}const ${type} * ${name}${(}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}const ${type} * ${class}::${name}${(}${)}${const}${volatile}${throw}
+{
+	return _type;
+}"
+	cpp_name_spec "getType"
+	final 
+	java_name_spec "get_${name}"
+	
+	idl_name_spec "get_${name}"
+	get_of_relation classrelation_ref 128401 // _type (<unidirectional association>)
+      end
+
+      operation 130449 "getName"
+	const public explicit_return_type "char*"
+	nparams 0
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}const ${type} ${name}${(}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}const ${type} ${class}::${name}${(}${)}${const}${volatile}${throw}
+{
+	return _name;
+}"
+	cpp_name_spec "getName"
+	final 
+	java_name_spec "get_${name}"
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 129297 // _name
+      end
+    end
+
+    class 128273 "Table"
+       stereotype "control"
+      cpp_decl "#include <stdlib.h>
+#include <stdio.h>
+
+${comment}${template}class ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 129041 "_width"
+	protected explicit_type "int"
+	init_value "0"
+	cpp_decl "	${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};"
+	java_decl ""
+	idl_decl ""
+	get_oper operation_ref 128145 // getWidth
+      end
+
+      attribute 129169 "_length"
+	protected explicit_type "int"
+	init_value "0"
+	cpp_decl "	${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};"
+	java_decl ""
+	idl_decl ""
+	get_oper operation_ref 128401 // getLength
+      end
+
+      classrelation 128913 // _squares (<unidirectional association>)
+	relation 128785 --->
+	  a role_name "_squares" multiplicity "" init_value "NULL" protected
+	    cpp default "	${comment}${static}${mutable}${volatile}${const}${type}*** ${name}${value};"
+	    classrelation_ref 128913 // _squares (<unidirectional association>)
+	  b parent class_ref 128017 // Square
+      end
+
+      operation 134033 "Table"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "	${comment}${inline}${name}${(}${)}${volatile}${throw};"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw}
+{
+	${body}}"
+	
+	
+      end
+
+      operation 129937 "Table"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "width" explicit_type "int"
+	  param in name "length" explicit_type "int"
+	cpp_decl "	${comment}${inline}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${volatile}${throw};"
+	cpp_def "${comment}${inline}${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${volatile}${throw}
+{
+	${body}}"
+	
+	
+      end
+
+      operation 130065 "~Table"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "	${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw}
+{
+	${body}}"
+	
+	
+      end
+
+      operation 131985 "clear"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}
+{
+	${body}}"
+	
+	
+      end
+
+      operation 128145 "getWidth"
+	const public explicit_return_type "int"
+	nparams 0
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}const ${type} ${name}${(}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}const ${type} ${class}::${name}${(}${)}${const}${volatile}${throw}
+{
+	return _width;
+}"
+	cpp_name_spec "getWidth"
+	final 
+	java_name_spec "get_${name}"
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 129041 // _width
+      end
+
+      operation 128401 "getLength"
+	const public explicit_return_type "int"
+	nparams 0
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}const ${type} ${name}${(}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}const ${type} ${class}::${name}${(}${)}${const}${volatile}${throw}
+{
+	return _length;
+}"
+	cpp_name_spec "getLength"
+	final 
+	java_name_spec "get_${name}"
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 129169 // _length
+      end
+
+      operation 128017 "getSquare"
+	public explicit_return_type "Square*"
+	nparams 2
+	  param in name "xPos" explicit_type "int"
+	  param in name "yPos" explicit_type "int"
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}
+{
+	${body}}"
+	
+	
+      end
+    end
+
+    class 128657 "Table8"
+       stereotype "control"
+      cpp_decl "${comment}${template}class ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129169 // <generalisation>
+	relation 129041 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 129169 // <generalisation>
+	  b parent class_ref 128273 // Table
+      end
+
+      operation 133649 "Table8"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "width" explicit_type "int"
+	  param in name "length" explicit_type "int"
+	cpp_decl "	${comment}${inline}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${volatile}${throw};"
+	cpp_def "${comment}${inline}${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${volatile}${throw}
+{
+	${body}}"
+	
+	
+      end
+
+      operation 133777 "~Table8"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "	${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw}
+{
+	${body}}"
+	
+	
+      end
+
+      operation 133905 "getSquare8"
+	public explicit_return_type "Square8*"
+	nparams 2
+	  param in name "xPos" explicit_type "int"
+	  param in name "yPos" explicit_type "int"
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}
+{
+	${body}}"
+	
+	
+      end
+    end
+
+    class 128401 "Type"
+       stereotype "entity"
+      cpp_decl "#include <string.h>
+#include <stdlib.h>
+
+${comment}${template}class ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 128785 "_id"
+	protected explicit_type "int"
+	cpp_decl "	${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};"
+	java_decl ""
+	idl_decl ""
+	get_oper operation_ref 130705 // getId
+	set_oper operation_ref 130833 // setId
+      end
+
+      attribute 128913 "_name"
+	protected explicit_type "char*"
+	cpp_decl "	${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};"
+	java_decl ""
+	idl_decl ""
+	get_oper operation_ref 130961 // getName
+      end
+
+      operation 131217 "Type"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "	${comment}${inline}${name}${(}${)}${volatile}${throw};"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw}
+{
+	${body}}"
+	
+	
+      end
+
+      operation 131345 "~Type"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "	${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw}
+{
+	${body}}"
+	
+	
+      end
+
+      operation 130833 "setId"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "value" explicit_type "int"
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}
+{
+	_id = ${p0};
+}"
+	cpp_name_spec "setId"
+	
+	java_name_spec "set_${name}"
+	
+	idl_name_spec "set_${name}"
+	set_of_attribute attribute_ref 128785 // _id
+      end
+
+      operation 132241 "setName"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "value" explicit_type "char*"
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}
+{
+	${body}}"
+	
+	
+      end
+
+      operation 130705 "getId"
+	const public explicit_return_type "int"
+	nparams 0
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}const ${type} ${name}${(}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}const ${type} ${class}::${name}${(}${)}${const}${volatile}${throw}
+{
+	return _id;
+}"
+	cpp_name_spec "getId"
+	final 
+	java_name_spec "get_${name}"
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 128785 // _id
+      end
+
+      operation 130961 "getName"
+	const public explicit_return_type "char*"
+	nparams 0
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}const ${type} ${name}${(}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}const ${type} ${class}::${name}${(}${)}${const}${volatile}${throw}
+{
+	return _name;
+}"
+	cpp_name_spec "getName"
+	final 
+	java_name_spec "get_${name}"
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 128913 // _name
+      end
+    end
+
+    class 128785 "LifeGame"
+       stereotype "control"
+      cpp_decl "#include \"assert.h\"
+
+${comment}${template}class ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129425 // _gameTable (<unidirectional association>)
+	relation 129297 --->
+	  a role_name "_gameTable" multiplicity "1" init_value "NULL" protected
+	    cpp default "	${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};"
+	    classrelation_ref 129425 // _gameTable (<unidirectional association>)
+	  b parent class_ref 128657 // Table8
+	  association_explicit_type "Table8*"
+      end
+
+      classrelation 129553 // _backTable (<unidirectional association>)
+	relation 129425 --->
+	  a role_name "_backTable" multiplicity "1" init_value "NULL" protected
+	    cpp default "	${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};"
+	    classrelation_ref 129553 // _backTable (<unidirectional association>)
+	  b parent class_ref 128657 // Table8
+	  association_explicit_type "Table8*"
+      end
+
+      classrelation 129681 // _lifeObject (<unidirectional association>)
+	relation 129553 --->
+	  a role_name "_lifeObject" multiplicity "" init_value "NULL" protected
+	    cpp default "	${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};"
+	    classrelation_ref 129681 // _lifeObject (<unidirectional association>)
+	  b parent class_ref 128145 // Object
+	  association_explicit_type "Object*"
+      end
+
+      attribute 129937 "_nbLife"
+	protected explicit_type "int"
+	init_value "0"
+	cpp_decl "	${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};"
+	java_decl ""
+	idl_decl ""
+	get_oper operation_ref 134801 // getNbLife
+      end
+
+      attribute 130065 "_size"
+	protected explicit_type "int"
+	init_value "0"
+	cpp_decl "	${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};"
+	java_decl ""
+	idl_decl ""
+	get_oper operation_ref 134929 // getSize
+      end
+
+      operation 134161 "LifeGame"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "size" explicit_type "int"
+	cpp_decl "	${comment}${inline}${name}${(}${t0} ${p0}${)}${volatile}${throw};"
+	cpp_def "${comment}${inline}${class}::${name}${(}${t0} ${p0}${)}${volatile}${throw}
+{
+	${body}}"
+	
+	
+      end
+
+      operation 134289 "~LifeGame"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "	${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw}
+{
+	${body}}"
+	
+	
+      end
+
+      operation 134801 "getNbLife"
+	const public explicit_return_type "int"
+	nparams 0
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}const ${type} ${name}${(}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}const ${type} ${class}::${name}${(}${)}${const}${volatile}${throw}
+{
+	return _nbLife;
+}"
+	cpp_name_spec "getNbLife"
+	final 
+	java_name_spec "get_${name}"
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 129937 // _nbLife
+      end
+
+      operation 134929 "getSize"
+	const public explicit_return_type "int"
+	nparams 0
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}const ${type} ${name}${(}${)}${const}${volatile}${throw};"
+	cpp_def "${comment}${inline}const ${type} ${class}::${name}${(}${)}${const}${volatile}${throw}
+{
+	return _size;
+}"
+	cpp_name_spec "getSize"
+	final 
+	java_name_spec "get_${name}"
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 130065 // _size
+      end
+
+      operation 135185 "computeNextGeneration"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}
+{
+	${body}}"
+	
+	
+      end
+
+      operation 135313 "endOfLife"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}
+{
+	${body}}"
+	
+	
+      end
+
+      operation 135441 "isAlive"
+	public explicit_return_type "bool"
+	nparams 2
+	  param in name "xPos" explicit_type "int"
+	  param in name "yPos" explicit_type "int"
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}
+{
+	${body}}"
+	
+	
+      end
+
+      operation 135569 "setAlive"
+	public explicit_return_type "void"
+	nparams 3
+	  param in name "xPos" explicit_type "int"
+	  param in name "yPos" explicit_type "int"
+	  param in name "alive" explicit_type "bool"
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${volatile}${throw}${abstract};"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${volatile}${throw}
+{
+	${body}}"
+	
+	
+      end
+
+      operation 135697 "swapTables"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "	${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}
+{
+	${body}}"
+	
+	
+      end
+
+      classrelation 130065 // <dependency>
+	relation 129809 -_->
+	  a package
+	    cpp default "Generated"
+	    classrelation_ref 130065 // <dependency>
+	  b parent class_ref 128529 // Square8
+      end
+    end
+  end
+
+  deploymentview 128017 "Deployment view"
+    //deployment diagram settings
+    package_name_in_tab default show_context default write_horizontally default auto_label_position default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default
+    artifact 128017 "Square"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 128017 // Square
+      end
+    end
+
+    artifact 128145 "Object"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 128145 // Object
+      end
+    end
+
+    artifact 128273 "Table"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 128273 // Table
+      end
+    end
+
+    artifact 128401 "Type"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 128401 // Type
+      end
+    end
+
+    artifact 128529 "Square8"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 128529 // Square8
+      end
+    end
+
+    artifact 128657 "Table8"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 128657 // Table8
+      end
+    end
+
+    artifact 128785 "LifeGame"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 128785 // LifeGame
+      end
+    end
+  end
+end

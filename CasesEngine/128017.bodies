@@ -1,0 +1,7 @@
+class Square
+!!!131729.cpp!!!	Square()
+_upSquare = NULL;
+_rightSquare = NULL;
+_downSquare = NULL;
+_leftSquare = NULL;
+_object = NULL;

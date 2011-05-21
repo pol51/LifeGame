@@ -1,0 +1,13 @@
+window_sizes 1280 977 243 1031 682 82
+diagrams
+  active  classdiagram_ref 128017 // Diagram
+    1031 821 100 4 0 0
+end
+show_stereotypes
+selected 
+  package_ref 129 // CasesEngine
+open
+  class_ref 128785 // LifeGame
+  deploymentview_ref 128017 // Deployment view
+end
+end

@@ -1,0 +1,6 @@
+class Square8
+!!!132369.cpp!!!	Square8()
+_upLeftSquare = NULL;
+_upRightSquare = NULL;
+_downLeftSquare = NULL;
+_downRightSquare = NULL;

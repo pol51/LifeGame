@@ -1,0 +1,102 @@
+class LifeGame
+!!!134161.cpp!!!	LifeGame(in size : int)
+assert(size);
+
+_size = size;
+_gameTable = new Table8(_size, _size);
+_backTable = new Table8(_size, _size);
+_lifeObject = new Object();
+_lifeObject->setName("Vie");
+_nbLife = 0;
+!!!134289.cpp!!!	~LifeGame()
+delete _gameTable;
+delete _backTable;
+delete _lifeObject;
+!!!135185.cpp!!!	computeNextGeneration() : void
+int nbr, nbLife = 0;
+
+for (int i = 0; i < _size; i++)
+	for (int j = 0; j < _size; j++)
+	{
+		nbr = 0;
+		
+		if (_gameTable->getSquare8(i, j)->getUpSquare())
+			if (_gameTable->getSquare8(i, j)->getUpSquare()->
+					getObject() == _lifeObject)
+				nbr++;
+		if (_gameTable->getSquare8(i, j)->getRightSquare())
+			if (_gameTable->getSquare8(i, j)->getRightSquare()
+					->getObject() == _lifeObject)
+				nbr++;
+		if (_gameTable->getSquare8(i, j)->getDownSquare())
+			if (_gameTable->getSquare8(i, j)->getDownSquare()->
+					getObject() == _lifeObject)
+				nbr++;
+		if (_gameTable->getSquare8(i, j)->getLeftSquare())
+			if (_gameTable->getSquare8(i, j)->getLeftSquare()->
+					getObject() == _lifeObject)
+				nbr++;
+		if (_gameTable->getSquare8(i, j)->getUpLeftSquare())
+			if (_gameTable->getSquare8(i, j)->getUpLeftSquare()->
+					getObject() == _lifeObject)
+				nbr++;
+		if (_gameTable->getSquare8(i, j)->getUpRightSquare())
+			if (_gameTable->getSquare8(i, j)->getUpRightSquare()->
+					getObject() == _lifeObject)
+				nbr++;
+		if (_gameTable->getSquare8(i, j)->getDownLeftSquare())
+			if (_gameTable->getSquare8(i, j)->getDownLeftSquare()->
+					getObject() == _lifeObject)
+				nbr++;
+		if (_gameTable->getSquare8(i, j)->getDownRightSquare())
+			if (_gameTable->getSquare8(i, j)->getDownRightSquare()->
+					getObject() == _lifeObject)
+				nbr++;
+		
+		if (nbr == 3)
+			_backTable->getSquare8(i, j)->setObject(_lifeObject);
+		else if (nbr == 2)
+			_backTable->getSquare8(i, j)->setObject((Object*)_gameTable->
+				getSquare8(i, j)->getObject());
+		else
+			_backTable->getSquare8(i, j)->setObject(NULL);
+		
+		if (_backTable->getSquare8(i, j)->getObject())
+			nbLife++;
+	}
+
+_nbLife = nbLife;
+swapTables();
+!!!135313.cpp!!!	endOfLife() : void
+for (int i = 0; i < _size; i++)
+	for (int j = 0; j < _size; j++)
+		_backTable->getSquare8(i, j)->setObject(NULL);
+		
+_nbLife = 0;
+swapTables();
+!!!135441.cpp!!!	isAlive(in xPos : int, in yPos : int) : bool
+if (_gameTable->getSquare8(xPos, yPos))
+	return (_gameTable->getSquare8(xPos, yPos)->getObject());
+return false;
+!!!135569.cpp!!!	setAlive(in xPos : int, in yPos : int, in alive : bool) : void
+if (_gameTable->getSquare8(xPos, yPos))
+	if (alive)
+	{
+		if (!_gameTable->getSquare8(xPos, yPos)->getObject())
+		{
+			_gameTable->getSquare8(xPos, yPos)->setObject(_lifeObject);
+			_nbLife++;
+		}
+	}
+	else
+	{
+		if (_gameTable->getSquare8(xPos, yPos)->getObject())
+		{
+			_gameTable->getSquare8(xPos, yPos)->setObject(NULL);
+			_nbLife--;
+		}
+	}
+!!!135697.cpp!!!	swapTables() : void
+Table8* tmpTable = _gameTable;
+_gameTable = _backTable;
+_backTable = tmpTable;

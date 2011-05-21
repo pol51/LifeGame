@@ -1,0 +1,70 @@
+format 27
+
+classcanvas 128017 class_ref 128017 // Square
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color blue
+  xyz 40 29 2000
+classcanvas 128145 class_ref 128145 // Object
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color blue
+  xyz 321 101 2000
+classcanvas 128273 class_ref 128273 // Table
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 34 359 2000
+classcanvas 128529 class_ref 128401 // Type
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 570 94 2000
+classcanvas 130065 class_ref 128529 // Square8
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color blue
+  xyz 285 319 2000
+classcanvas 130321 class_ref 128657 // Table8
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 29 604 2000
+classcanvas 130577 class_ref 128785 // LifeGame
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color mediumgreen
+  xyz 533 537 2000
+relationcanvas 129169 relation_ref 128273 // <unidirectional association>
+  from ref 128145 z 1999 to ref 128529
+  role_a_pos 532 161 3000 no_role_b
+  multiplicity_a_pos 553 186 3000 no_multiplicity_b
+relationcanvas 129681 relation_ref 128529 // <unidirectional association>
+  from ref 128017 z 1999 to ref 128145
+  role_a_pos 275 161 3000 no_role_b
+  multiplicity_a_pos 304 186 3000 no_multiplicity_b
+relationcanvas 129937 relation_ref 128785 // <unidirectional association>
+  from ref 128273 z 1999 to ref 128017
+  role_a_pos 148 336 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130193 relation_ref 128913 // <generalisation>
+  from ref 130065 z 1999 to ref 128017
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130449 relation_ref 129041 // <generalisation>
+  from ref 130321 z 1999 to ref 128273
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130961 relation_ref 129297 // <unidirectional association>
+  from ref 130577 z 1999 to point 396 604
+  line 131601 z 1999 to point 347 604
+  line 132369 z 1999 to ref 130321
+  role_a_pos 257 607 3000 no_role_b
+  multiplicity_a_pos 257 632 3000 no_multiplicity_b
+relationcanvas 131089 relation_ref 129425 // <unidirectional association>
+  from ref 130577 z 1999 to point 396 698
+  line 131729 z 1999 to point 347 698
+  line 132241 z 1999 to ref 130321
+  role_a_pos 257 660 3000 no_role_b
+  multiplicity_a_pos 257 685 3000 no_multiplicity_b
+relationcanvas 131857 relation_ref 129553 // <unidirectional association>
+  from ref 130577 z 1999 to point 644 287
+  line 131985 z 1999 to point 396 287
+  line 132113 z 1999 to ref 128145
+  role_a_pos 408 264 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 132625 relation_ref 129809 // <dependency>
+  from ref 130577 z 1999 to ref 130065
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end

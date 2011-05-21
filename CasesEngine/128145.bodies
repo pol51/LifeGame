@@ -1,0 +1,20 @@
+class Object
+!!!131473.cpp!!!	Object()
+_type = NULL;
+_name = NULL;
+!!!131601.cpp!!!	~Object()
+if (_name) free(_name);
+!!!132113.cpp!!!	setName(in value : char*) : void
+if (!value)
+	return;
+
+//suppression de l'ancien nom
+if (_name)
+{
+	free(_name);
+	_name = NULL;
+}
+
+//copie du nouveau nom et allocation
+_name = (char*)malloc((strlen(value)+1) * sizeof(char));
+strcpy(_name, value);

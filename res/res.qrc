@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/icons" >
+        <file>button/clear.png</file>
+        <file>button/next.png</file>
+        <file>button/quit.png</file>
+    </qresource>
+</RCC>
