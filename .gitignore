@@ -1,0 +1,4 @@
+build/
+bin/
+*.pro.user*
+.qtc_clangd/

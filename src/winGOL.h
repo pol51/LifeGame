@@ -9,7 +9,7 @@ class winGOL : public QWidget
 		Ui_GOL ui;
 		QPalette originalPalette;
 	public:
-		winGOL(QWidget *parent = 0);
+		winGOL(QWidget *parent = nullptr);
 	public slots:
 		void changeStyle(const QString &styleName);
 		void updateText(const int nbr);

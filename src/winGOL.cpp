@@ -1,4 +1,4 @@
-#include <QtGui>
+#include <QtWidgets>
 #include "winGOL.h"
 
 winGOL::winGOL(QWidget *parent):QWidget(parent)
@@ -6,7 +6,7 @@ winGOL::winGOL(QWidget *parent):QWidget(parent)
 	this->ui.setupUi(this);
 	
 	//chargement du style
-	this->changeStyle("Plastique");
+	this->changeStyle("Fusion");
 	
 	//evenements
 	QObject::connect(
@@ -31,7 +31,5 @@ void winGOL::changeStyle(const QString &styleName)
 
 void winGOL::updateText(const int nbr)
 {
-	char txt[128];
-	sprintf(txt, "Nombre: %d", nbr);
-	this->ui.txtNbLife->setText(txt);
+	this->ui.txtNbLife->setText(QString("Nombre: %1").arg(nbr));
 }

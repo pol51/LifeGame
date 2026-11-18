@@ -1,8 +1,5 @@
-#include <QtGui>
-#include <QtOpenGL>
-#include <stdlib.h>
-
-#include <math.h>
+#include <QtWidgets>
+#include <cassert>
 
 #include "lifeWidget.h"
 
@@ -11,7 +8,7 @@
 #include "engine/LifeGame.h"
 
 LifeWidget::LifeWidget(QWidget *parent, int nbCases)
-    : QGLWidget(QGLFormat(QGL::SampleBuffers), parent)
+    : QWidget(parent)
 {
 	assert(nbCases);
 	
@@ -21,7 +18,6 @@ LifeWidget::LifeWidget(QWidget *parent, int nbCases)
     connect(&refreshTimer, SIGNAL(timeout()), this, SLOT(update()));
     refreshTimer.start(15);
 
-    setAttribute(Qt::WA_NoSystemBackground);
     setMinimumSize(320, 320);
     setWindowTitle("LifeGame");
 	
@@ -39,14 +35,14 @@ LifeWidget::LifeWidget(QWidget *parent, int nbCases)
 	toggleFullScreenAction = new QAction(this);
 	toggleFullScreenAction->setShortcutContext(Qt::ApplicationShortcut);
 	toggleFullScreenAction->setCheckable(true);
-	toggleFullScreenAction->setShortcut(Qt::Key_Return | Qt::AltModifier);
+	toggleFullScreenAction->setShortcut(QKeySequence(Qt::ALT | Qt::Key_Return));
 	connect(toggleFullScreenAction, SIGNAL(triggered(bool)),
 			this, SLOT(toggleFullScreen(bool)));
 	
 	toggleGridAction = new QAction(this);
 	toggleGridAction->setShortcutContext(Qt::ApplicationShortcut);
 	toggleGridAction->setCheckable(true);
-	toggleGridAction->setShortcut(Qt::Key_G | Qt::AltModifier);
+	toggleGridAction->setShortcut(QKeySequence(Qt::ALT | Qt::Key_G));
 	connect(toggleGridAction, SIGNAL(triggered(bool)),
 			this, SLOT(toggleGrid(bool)));
 	
@@ -78,34 +74,31 @@ LifeWidget::LifeWidget(QWidget *parent, int nbCases)
 
 LifeWidget::~LifeWidget()
 {
-    makeCurrent();
-}
-
-void LifeWidget::initializeGL()
-{
+	delete lifeGame;
 }
 
 void LifeWidget::mousePressEvent(QMouseEvent *event)
 {
     updateSelection(event);
 	
-	if (event->buttons() & Qt::MidButton)
+	if (event->buttons() & Qt::MiddleButton)
 		gameHud->setVisible(!gameHud->isVisible());
 	
-	lastPos = event->pos();
+	lastPos = event->position().toPoint();
 }
 
 void LifeWidget::mouseMoveEvent(QMouseEvent *event)
 {
 	int side = qMin(width(), height());
-    mouseX = (float)(event->x() - (width()  - side)/2.) / (float)side;
-    mouseY = (float)(event->y() - (height() - side)/2.) / (float)side;
+	const QPointF pos = event->position();
+    mouseX = (float)(pos.x() - (width()  - side)/2.) / (float)side;
+    mouseY = (float)(pos.y() - (height() - side)/2.) / (float)side;
 	
-	gameHud->setPosition(QPoint(event->x()+5, event->y()+5));
+	gameHud->setPosition(QPoint(pos.x()+5, pos.y()+5));
 	
 	updateSelection(event);
 	
-	lastPos = event->pos();
+	lastPos = event->position().toPoint();
 }
 
 void LifeWidget::updateSelection(QMouseEvent *event)
@@ -132,129 +125,66 @@ void LifeWidget::updateSelection(QMouseEvent *event)
 
 void LifeWidget::updateHud()
 {
-	char txt[64];
-	sprintf(txt, "X = %5d\nY = %5d\nN = %5d", posX, posY, lifeGame->getNbLife());
-	gameHud->setText(txt);
+	gameHud->setText(QString("X = %1\nY = %2\nN = %3")
+		.arg(posX, 5).arg(posY, 5).arg(lifeGame->getNbLife(), 5));
 }
 
-void LifeWidget::paintGL()
+void LifeWidget::paintEvent(QPaintEvent *)
 {
-	float caseXmin, caseYmin, caseXmax, caseYmax;
+	QPainter painter(this);
+	painter.fillRect(rect(), Qt::black);
 	
 	if ((mouseX <= 1.0) && (mouseX >= 0.0) && (mouseY <= 1.0) && (mouseY >= 0.0))
-		setCursor(NULL);
+		unsetCursor();
 	else
 		setCursor(Qt::ArrowCursor);
 	
-	glPushAttrib(GL_ALL_ATTRIB_BITS);
-    glMatrixMode(GL_PROJECTION);
-    glPushMatrix();
-    glMatrixMode(GL_MODELVIEW);
-    glPushMatrix();
+	const int side = qMin(width(), height());
+	painter.save();
+	painter.translate((width() - side) / 2.0, (height() - side) / 2.0);
+	painter.scale(side / 1.002, side / 1.002);
+	painter.translate(0.001, 0.001);
+	painter.setRenderHint(QPainter::Antialiasing);
 	
-	glShadeModel(GL_SMOOTH);
-    glEnable(GL_DEPTH_TEST);
-    glEnable(GL_CULL_FACE);
+	const double cell = 1.0 / nbCases;
 	
-	resizeGL(width(), height());
+	painter.setPen(Qt::NoPen);
+	painter.setBrush(QColor::fromRgbF(0.0, 0.2, 0.8));
+	for (int i = 0; i < nbCases; i++)
+		for (int j = 0; j < nbCases; j++)
+			if (lifeGame->isAlive(i, j))
+				painter.drawRect(QRectF(i * cell, j * cell, cell, cell));
 	
-	glClearColor(0.0, 0.0, 0.0, 0.0);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glLoadIdentity();
-	
-	glColor3f(0.0, 0.2, 0.8);
-	glBegin(GL_QUADS);
-		for (int i = 0; i < nbCases; i++)
-			for (int j = 0; j < nbCases; j++)
-				if (lifeGame->isAlive(i, j))
-				{
-					caseXmin =(float)i / (float)nbCases;
-					caseXmax =(float)(i + 1) / (float)nbCases;
-					caseYmin =(float)j / (float)nbCases;
-					caseYmax =(float)(j + 1) / (float)nbCases;
-				
-					glVertex3f(caseXmin, caseYmin, -0.1);
-					glVertex3f(caseXmin, caseYmax, -0.1);
-					glVertex3f(caseXmax, caseYmax, -0.1);
-					glVertex3f(caseXmax, caseYmin, -0.1);
-				}
-	glEnd();
-	
+	painter.setBrush(Qt::NoBrush);
 	if (showGrid)
 	{
-		glColor3f(0.5, 0.5, 0.5);
-		glBegin(GL_LINES);
-			for (int i = 0; i <= nbCases; i++)
-			{
-			float j = (float)i / (float)nbCases;
-				
-				glVertex3f(0.0, j, -0.05);
-				glVertex3f(1.0, j, -0.05);
-			
-				glVertex3f(j, 0.0, -0.05);
-				glVertex3f(j, 1.0, -0.05);
-			}
-		glEnd();
+		QPen pen(QColor::fromRgbF(0.5, 0.5, 0.5));
+		pen.setCosmetic(true);
+		painter.setPen(pen);
+		for (int i = 0; i <= nbCases; i++)
+		{
+			const double j = i * cell;
+			painter.drawLine(QPointF(0.0, j), QPointF(1.0, j));
+			painter.drawLine(QPointF(j, 0.0), QPointF(j, 1.0));
+		}
 	}
-		
-	glColor3f(1.0, 0.0, 0.0);
-	glBegin(GL_LINE_LOOP);
-		caseXmin =(float)posX / (float)nbCases;
-		caseXmax =(float)(posX + 1) / (float)nbCases;
-		caseYmin =(float)posY / (float)nbCases;
-		caseYmax =(float)(posY + 1) / (float)nbCases;
-		
-		glVertex3f(caseXmin, caseYmin, -0.02);
-		glVertex3f(caseXmin, caseYmax, -0.02);
-		glVertex3f(caseXmax, caseYmax, -0.02);
-		glVertex3f(caseXmax, caseYmin, -0.02);
-	glEnd();
 	
-	glColor3f(0.0, 1.0, 1.0);
-	glBegin(GL_LINES);
-		glVertex3f(mouseX - 0.01, mouseY, -0.01);
-		glVertex3f(mouseX - 0.0025, mouseY, -0.01);
-		glVertex3f(mouseX + 0.01, mouseY, -0.01);
-		glVertex3f(mouseX + 0.0025, mouseY, -0.01);
-		glVertex3f(mouseX, mouseY - 0.01, -0.01);
-		glVertex3f(mouseX, mouseY - 0.0025, -0.01);
-		glVertex3f(mouseX, mouseY + 0.01, -0.01);
-		glVertex3f(mouseX, mouseY + 0.0025, -0.01);
-	glEnd();
+	QPen selection(Qt::red);
+	selection.setCosmetic(true);
+	painter.setPen(selection);
+	painter.drawRect(QRectF(posX * cell, posY * cell, cell, cell));
 	
-	glFlush();
+	QPen cross(Qt::cyan);
+	cross.setCosmetic(true);
+	painter.setPen(cross);
+	painter.drawLine(QPointF(mouseX - 0.01, mouseY), QPointF(mouseX - 0.0025, mouseY));
+	painter.drawLine(QPointF(mouseX + 0.01, mouseY), QPointF(mouseX + 0.0025, mouseY));
+	painter.drawLine(QPointF(mouseX, mouseY - 0.01), QPointF(mouseX, mouseY - 0.0025));
+	painter.drawLine(QPointF(mouseX, mouseY + 0.01), QPointF(mouseX, mouseY + 0.0025));
+	painter.restore();
 	
-	glPopAttrib();
-    glMatrixMode(GL_MODELVIEW);
-    glPopMatrix();
-    glMatrixMode(GL_PROJECTION);
-    glPopMatrix();
-}
-
-void LifeWidget::resizeGL(int width, int height)
-{
-    int side = qMin(width, height);
-    glViewport((width - side) / 2, (height - side) / 2, side, side);
-	
-	glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    glOrtho(-0.001, 1.001, 1.001, -0.001, -1.0, 1.0);
-	glMatrixMode(GL_MODELVIEW);
-}
-
-void LifeWidget::paintEvent(QPaintEvent *event)
-{
-	QPainter painter;
-    painter.begin(this);
-	
-	paintGL();
-
-	painter.setRenderHint(QPainter::Antialiasing);
-
 	updateHud();
 	gameHud->draw(&painter);
-
-	painter.end();
 }
 
 QSize LifeWidget::sizeHint() const
